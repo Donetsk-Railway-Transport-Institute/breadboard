@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE objects>
+<poligon>
+	<peregon name="Горная-Луговая">
+		<!-- Файл с описанием логики работы автоблокировки -->
+		<at_script name="./xml/Горная-Луговая/ab.js"/>
+		<!-- Файл с описанием объектов перегона -->
+		<xml name="./xml/Горная-Луговая/obj.xml"/>
+	</peregon>
+	<peregon name="Луговая-Горная">
+		<!-- Файл с описанием логики работы полуавтоматики -->
+		<at_script name="./xml/Луговая-Горная/pab.js"/>
+		<!-- Файл с описанием объектов перегона -->
+		<xml name="./xml/Луговая-Горная/obj.xml"/>
+	</peregon>
+	<stantion name="Горная" x="5" y="1">
+		<!-- Файл с описанием маршрутов -->
+		<at_script name="./xml/Горная/routes.js"/>
+		<!-- Файл с описанием объектов контроля станции -->
+		<xml name="./xml/Горная/obj.xml"/>
+		<!-- Аттрибут control в описании станции присутствует, если она находится -->
+                <!-- на управлениии и для нее создана панель, с конфигурацией в двух файлах -->
+		<control name_xml="./xml/Горная/panel.xml" name_ui="./xml/Горная/panel.ui"/>
+    </stantion>
+	<stantion name="Луговая" x="4" y="20">
+		<at_script name="./xml/Луговая/routes.js"/>
+		<xml name="./xml/Луговая/obj.xml"/>
+		<control name_xml="./xml/Луговая/panel.xml" name_ui="./xml/Луговая/panel.ui"/>
+    </stantion>
+	<binding>
+		<!-- Увязка сигналов, атрибут gen_signal="1", если необходимо генерировать -->
+                <!-- сигнал повторителю (атрибут to) при изменении основного (атрибут from) -->
+		<!-- Повторители участков удаления/приближения -->
+		<signal_peregon_stantion from="Горная-Луговая:2П" to="Горная:1УП" gen_signal="0"/>
+		<signal_peregon_stantion from="Горная-Луговая:3П" to="Горная:2УП" gen_signal="0"/>
+		<signal_peregon_stantion from="Горная-Луговая:1П" to="Луговая:1УП" gen_signal="0"/>
+		<signal_peregon_stantion from="Горная-Луговая:3П" to="Луговая:2УП" gen_signal="0"/>
+		<signal_peregon_stantion from="Луговая-Горная:ЧН1" to="Горная:1ПП" gen_signal="0"/>
+		<signal_peregon_stantion from="Луговая-Горная:ЧН2" to="Луговая:1ПП" gen_signal="0"/>
+		<!-- Контроль состояния перегона Горная-Луговая -->
+		<signal_peregon_stantion from="Горная-Луговая:СН" to="Горная:КП" gen_signal="0"/>
+		<signal_peregon_stantion from="Горная-Луговая:СН" to="Луговая:КП" gen_signal="0"/>
+		<!-- Контроль состояния перегона Луговая-Горная -->
+		<signal_peregon_stantion from="Луговая-Горная:СН" to="Горная:КПАБ" gen_signal="0"/>
+		<signal_peregon_stantion from="Луговая-Горная:СН" to="Луговая:КПАБ" gen_signal="0"/>
+		<!-- Увязка предвходных светофоров -->
+		<signal_stantion_peregon from="Горная:Ч" to="Горная-Луговая:ПЧ" gen_signal="1"/>
+		<signal_stantion_peregon from="Луговая:Н" to="Горная-Луговая:ПН" gen_signal="1"/>
+		<signal_stantion_peregon from="Горная:Н" to="Луговая-Горная:ПН" gen_signal="1"/>
+		<signal_stantion_peregon from="Луговая:Ч" to="Луговая-Горная:ПЧ" gen_signal="1"/>
+		<!-- Увязка по смене направления на перегоне Горная-Луговая -->
+		<signal_stantion_peregon from="Горная:СНН" to="Горная-Луговая:СН" gen_signal="1"/>
+		<signal_stantion_peregon from="Луговая:СНЧ" to="Горная-Луговая:СН" gen_signal="1"/>
+		<signal_peregon_stantion from="Горная-Луговая:СН" to="Горная:СНН" gen_signal="1"/>
+		<signal_peregon_stantion from="Горная-Луговая:СН" to="Луговая:СНЧ" gen_signal="1"/>
+		<!-- Увязка РПБ на перегоне Луговая-Горная -->
+		<signal_stantion_peregon from="Горная:ДС" to="Луговая-Горная:СН" gen_signal="1"/>
+		<signal_stantion_peregon from="Луговая:ДС" to="Луговая-Горная:СН" gen_signal="1"/>
+		<signal_peregon_stantion from="Луговая-Горная:СН" to="Горная:ПС" gen_signal="1"/>
+		<signal_peregon_stantion from="Луговая-Горная:СН" to="Луговая:ПС" gen_signal="1"/>
+	</binding>
+</poligon>

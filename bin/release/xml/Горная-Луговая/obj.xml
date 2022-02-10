@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<objects>
+    <!-- Атрибуты type, name, script обязательные -->
+    <!-- В объектах возможно использование следующих имен атрибутов: -->
+    <!-- x,y - координаты ключевой (начальной) ячейки отображения -->
+    <obj type="track_ab" name="2П" script="track_ab" x="2" yn="9" yf="13" ph_len="500"/>
+    <obj type="track_ab" name="3П" script="track_ab" x="2" yn="15" yf="19" ph_len="510"/>
+    <obj type="track_ab" name="1П" script="track_ab" x="2" yn="21" yf="27" ph_len="530"/>
+    <obj type="signal_ab" name="3" script="signal_ab" x="2" y="13" orientation="0"/>
+    <obj type="signal_ab" name="2" script="signal_ab" x="2" y="14" orientation="1"/>
+    <obj type="signal_ab" name="1" script="signal_ab" x="2" y="19" orientation="0"/>
+    <obj type="signal_ab" name="4" script="signal_ab" x="2" y="20" orientation="1"/>
+    <obj type="direction_of_peregon" name="СН" script="direction_of_peregon" x="3" y="15"/>
+</objects>

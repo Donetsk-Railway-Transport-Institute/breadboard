@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<objects>
+    <!-- Атрибуты type, name, script обязательные -->
+    <!-- В объектах возможно использование следующих имен атрибутов: -->
+    <!-- x,y - координаты ключевой (начальной) ячейки отображения -->
+    <!-- len,angle,invitation,depends_name -->
+<!-- Индикатор направления движения на перегон Горная-Луговая -->
+    <obj type="direction_of_stantion" name="СНЧ" script="direction_of_stantion" x="4" y="24" direction="1"/>
+
+<!-- Индикаторы РПБ Луговая-Горная -->
+    <obj type="indicator_of_ps" name="ПС" script="indicator_length_as_name" x="21" y="20" direction="0"/>
+    <obj type="indicator_of_po" name="ПО" script="indicator_length_as_name" x="24" y="20" direction="0"/>
+    <obj type="indicator_of_pp" name="ПП" script="indicator_length_as_name" x="21" y="22" direction="0"/>
+    <obj type="indicator_of_ds" name="ДС" script="indicator_length_as_name" x="24" y="22" direction="0"/>
+    <obj type="indicator_of_on" name="ОН" script="indicator_length_as_name" x="18" y="22" direction="0"/>
+
+<!-- Индикаторы задания маршрутов -->
+    <obj type="indicator_of_setting_routes" name="ИЗМН" script="indicator_s_routes_rigth" x="11" y="20"/>
+    <obj type="indicator_of_setting_routes" name="ИЗМЧ" script="indicator_s_routes_left" x="9" y="20"/>
+
+<!-- Индикатор отмены маршрута -->
+    <obj type="indicator_of_cancel_routes" name="Отмена" script="indicator_length_as_name" x="13" y="20"/>
+
+<!-- Индикатор искуственного размыкания секций -->
+    <obj type="indicator_of_artificial_unlocking" name="ИР" script="indicator_length_as_name" x="18" y="20"/>
+
+    <obj type="signal" name="Н" script="signal" x="3" y="28" angle="0" invitation="1"/>
+    <obj type="track_site" name="1СП" script="track_site" x="3" y="27" len="3" ph_len="330"/>
+    <obj type="track_site" name="2СП" script="track_site" x="24" y="27" len="3" ph_len="390"/>
+    <obj type="signal" name="Ч1" script="signal" x="8" y="26" angle="180" invitation="0"/>
+    <obj type="track" name="1П" script="track" x="8" y="27" len="14" ph_len="340"/>
+    <obj type="signal" name="Н1" script="signal" x="19" y="28" angle="0" invitation="0"/>
+    <obj type="str_site" name="1СП" script="str_site_1ru" x="6" y="27"/>
+    <obj type="str" name="1" script="str_up_right" depends_name="1СП" x="6" y="27"/>
+    <obj type="signal" name="Ч2" script="signal" x="8" y="23" angle="180" invitation="0"/>
+    <obj type="track" name="2П" script="track" x="8" y="24" len="14" ph_len="340"/>    
+    <obj type="signal" name="Н2" script="signal" x="19" y="25" angle="0" invitation="0"/>
+    <obj type="str_site" name="2СП" script="str_site_1lu" x="23" y="27" ph_len="390"/>
+    <obj type="str" name="2" script="str_up_left" depends_name="2СП" x="23" y="27"/>
+    <obj type="signal" name="Ч" script="signal" x="24" y="26" angle="180" invitation="1"/>
+</objects>

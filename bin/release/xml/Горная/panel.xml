@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE widgets>
+<widgets>
+    <!-- Описание кнопок на панели управления станцией -->
+    <!-- Cодержит описание органов управления панелей -->
+    <!-- (например кнопки) с командами, которые необходимо -->
+    <!-- сгенерировать по факту подачи команды оператором. -->
+    <!-- Тег code необходим для передачи команд по TCP-сокету -->
+
+    <button name="+" x="20" y="60" w="25" h="25" signal="ПУЛЬТ_Горная:1+" code="A28BE9E12C9A2671D53CA560B72EFD9F"/>
+    <button name="-" x="50" y="60" w="25" h="25" signal="ПУЛЬТ_Горная:1-" code="969D06911C3BF512DDF363CCA1291785"/>
+
+    <button name="+" x="90" y="60" w="25" h="25" signal="ПУЛЬТ_Горная:3+" code="FFAEB1FDBE1C4501EE9E6F8B764D035B"/>
+    <button name="-" x="120" y="60" w="25" h="25" signal="ПУЛЬТ_Горная:3-" code="01B42A9A616D760F9AB7C18EC430D784"/>
+
+    <button name="+" x="20" y="110" w="25" h="25" signal="ПУЛЬТ_Горная:2+" code="B6D2480EDD91162EC33D733E55E843A7"/>
+    <button name="-" x="50" y="110" w="25" h="25" signal="ПУЛЬТ_Горная:2-" code="5EC3F734C5619D9AD870F2F15E0A18BA"/>
+
+    <button name="+" x="90" y="110" w="25" h="25" signal="ПУЛЬТ_Горная:4+" code="B10FCA4582AE72948BAB1B92D2B3B86C"/>
+    <button name="-" x="120" y="110" w="25" h="25" signal="ПУЛЬТ_Горная:4-" code="3E12FAB1B3A07314BE1DB430B7291A7F"/>
+
+    <button name="Н" x="180" y="40" w="30" h="25" signal="ПУЛЬТ_Горная:Н" code="043E9E84556F784AE8D963C9810CF10D"/>
+    <button name="Н3" x="180" y="75" w="30" h="25" signal="ПУЛЬТ_Горная:Н3" code="9D9F2390D8DFFA4DF57148E4AF47CA2E"/>
+
+    <button name="Н1" x="220" y="40" w="30" h="25" signal="ПУЛЬТ_Горная:Н1" code="8E3B82086B7C79718050C854EA6773C0"/>
+    <button name="2ПН" x="220" y="75" w="30" h="25" signal="ПУЛЬТ_Горная:2ПН" code="B0C02E666083EBF52314B898F8E46548"/>
+
+    <button name="Ч" x="260" y="40" w="30" h="25" signal="ПУЛЬТ_Горная:Ч" code="2FAA3119C5E243A8EC2D8B906DD8D301"/>
+    <button name="Ч2" x="260" y="75" w="30" h="25" signal="ПУЛЬТ_Горная:Ч2" code="84BAECCD98446672CA19E5D2FD170844"/>
+
+    <button name="Ч1" x="300" y="40" w="30" h="25" signal="ПУЛЬТ_Горная:Ч1" code="3FC48694BED57CB9EF7974915E2B0861"/>
+    <button name="3ПЧ" x="300" y="75" w="30" h="25" signal="ПУЛЬТ_Горная:3ПЧ" code="F8278CE16FB55FF2A29B65CD425F9990"/>
+
+    <button name="2-4СП" x="185" y="125" w="45" h="25" signal="ПУЛЬТ_Горная:ИР2-4СП" code="790556B968F8EDD51A2A3E4F4E6C28C7"/>
+    <button name="1-3СП" x="235" y="125" w="45" h="25" signal="ПУЛЬТ_Горная:ИР1-3СП" code="AD16C7DB0B03DE8E2D16A9D896598136"/>
+    <button name="ИР" x="285" y="125" w="45" h="25" signal="ПУЛЬТ_Горная:ИР" code="59116C832897F43F282FE1F32C30E0BC"/>
+
+    <button name="дача согласия" x="360" y="45" w="100" h="25" signal="ПУЛЬТ_Горная:ПДС" code="45EC621EA824443C7EE0472AB73A0446"/>
+    <button name="дача прибытия" x="360" y="115" w="100" h="25" signal="ПУЛЬТ_Горная:ДП" code="0F71409F97E647A409FB6BD5A52620BA"/>
+
+    <button name="смена направл." x="470" y="45" w="100" h="25" signal="ПУЛЬТ_Горная:СМНАПР" code="33B2EFFEF3B701CFBD79944FA8E28C01"/>
+    <button name="отмена маршрута" x="470" y="80" w="100" h="25" signal="ПУЛЬТ_Горная:ОТМЕНА" code="653BFD827C559BE74B8F92FA71D3C684"/>
+    <button name="отмена набора" x="470" y="115" w="100" h="25" signal="ПУЛЬТ_Горная:ОТМНАБ" code="6BAD891028506BD570AEADD4B943F358"/>
+</widgets>

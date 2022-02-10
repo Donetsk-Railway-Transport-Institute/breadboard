@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE objects>
+<objects>
+    <!-- Описание типов объектов и их состояний -->
+    <!-- для каждого состояния 4 обязательных атрибута: -->
+    <!--    num - порядковый номер в массиве состояний -->
+    <!--    color - цвет отображения объекта в этом состоянии, -->
+    <!--	 если зависит от какого-либо типа, то - "depends", -->
+    <!--    color_background - цвет фона ячейки отображения, -->
+    <!--	 если должен быть общий цвет фона, то - "all" -->
+    <!--    comment - описание данного состояния -->
+    <stantion comment="Станция" depends_type="">
+        <sost num="0" color="white" color_background="gray" comment="отсутствует контроль состояния станции"/>
+        <sost num="1" color="darkBlue" color_background="rgb(181,218,181)" comment="есть контроль состояния станции"/>
+    </stantion>
+    <track comment="Приемо-отправочный путь" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль состояния приемо-отправочного пути"/>
+        <sost num="1" color="red" color_background="all" comment="приемо-отправочный путь занят"/>
+        <sost num="2" color="black" color_background="all" comment="приемо-отправочный путь свободен"/>
+        <sost num="3" color="white" color_background="all" comment="устанавливается маршрут с четной/нечетной горловины"/>
+        <sost num="4" color="white" color_background="all" comment="устанавливается маршрут с нечетной/четной горловины"/>
+    </track>
+    <track_ab comment="Блок-участок перегона автоблокировки" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль состояния блок-участка"/>
+        <sost num="1" color="red" color_background="all" comment="блок-участок занят"/>
+        <sost num="2" color="black" color_background="all" comment="блок-участок свободен"/>
+    </track_ab>
+    <track_pab comment="Участок пути перегона с полуавтоматической блокировкой" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль состояния участка пути"/>
+        <sost num="1" color="red" color_background="all" comment="участок пути занят"/>
+        <sost num="2" color="black" color_background="all" comment="участок пути свободен"/>
+    </track_pab>
+    <track_site comment="Безстрелочная секция" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль состояния безстрелочной секции"/>
+        <sost num="1" color="red" color_background="all" comment="безстрелочная секция занята"/>
+        <sost num="2" color="black" color_background="all" comment="безстрелочная секция свободна"/>
+        <sost num="3" color="white" color_background="all" comment="безстрелочная секция замкнута в маршруте"/>
+        <sost num="4" color="white" color_background="all" comment="окончание ИР безстрелочной секции"/>
+    </track_site>
+    <signal comment="Светофор" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль состояния светофора"/>
+        <sost num="1" color="red" color_background="all" comment="светофор закрыт"/>
+        <sost num="2" color="green" color_background="all" comment="светофор открыт (желтый)"/>
+        <sost num="3" color="green" color_background="all" comment="светофор открыт (зеленый)"/>
+        <sost num="4" color="green" color_background="all" comment="светофор открыт (два желтых)"/>
+        <sost num="5" color="green" color_background="all" comment="светофор открыт (два желтых, верхний мигающий)"/>
+        <sost num="6" color="white" color_background="all" comment="на светофоре пригласительное показание"/>
+    </signal>
+    <signal_shunting comment="Маневровый светофор" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль состояния светофора"/>
+        <sost num="1" color="darkBlue" color_background="all" comment="маневры запрещены"/>
+        <sost num="2" color="white" color_background="all" comment="маневры разрешены"/>
+    </signal_shunting>
+    <signal_ab comment="Светофор автоблокировки" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль состояния светофора"/>
+        <sost num="1" color="red" color_background="all" comment="светофор закрыт (красный)"/>
+        <sost num="2" color="yellow" color_background="all" comment="светофор открыт (желтый)"/>
+        <sost num="3" color="green" color_background="all" comment="светофор открыт (зеленый)"/>
+        <sost num="4" color="yellow" color_background="all" comment="светофор открыт (желтый мигающий)"/>
+    </signal_ab>
+    <str_site comment="Стрелочная секция" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль состояния стрелочной секции"/>
+        <sost num="1" color="red" color_background="all" comment="стрелочная секция занята"/>
+        <sost num="2" color="black" color_background="all" comment="стрелочная секция свободна"/>
+        <sost num="3" color="white" color_background="all" comment="стрелочная секция замкнута в маршруте"/>
+        <sost num="4" color="white" color_background="all" comment="окончание ИР стрелочной секции"/>
+    </str_site>
+    <deadlock comment="Тупик" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль состояния"/>
+        <sost num="1" color="black" color_background="all" comment="контроль состояния"/>
+    </deadlock> 
+    <str comment="Стрелка" depends_type="str_site">
+        <sost num="0" color="depends" color_background="all" comment="отсутствует контроль положения стрелки"/>
+        <sost num="1" color="depends" color_background="all" comment="стрелка в плюсовом положении"/>
+        <sost num="2" color="depends" color_background="all" comment="стрелка в минусовом положении"/>
+    </str>
+    <direction_of_peregon comment="Направление движения на перегоне" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль установленного направления движения на перегоне"/>
+        <sost num="1" color="red" color_background="all" comment="установлено нечетное направление движения, перегон занят"/>
+        <sost num="2" color="red" color_background="all" comment="установлено четное направление движения, перегон занят"/>
+        <sost num="3" color="green" color_background="all" comment="установлено нечетное направление движения, перегон свободен"/>
+        <sost num="4" color="green" color_background="all" comment="установлено четное направление движения, перегон свободен"/>
+    </direction_of_peregon>
+    <direction_of_stantion comment="Индикатор установленного направления движения на перегоне" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль установленного направления"/>
+        <sost num="1" color="red" color_background="all" comment="установлено нечетное направление"/>
+        <sost num="2" color="red" color_background="all" comment="установлено четное направление"/>
+        <sost num="3" color="green" color_background="all" comment="установлено нечетное направление"/>
+        <sost num="4" color="green" color_background="all" comment="установлено четное направление"/>
+    </direction_of_stantion>
+    <indicator_of_setting_routes comment="Индикатор задания маршрутов" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="маршруты не устанавливаются"/>
+        <sost num="1" color="green" color_background="all" comment="начало установки поездного маршрута"/>
+        <sost num="2" color="green" color_background="all" comment="окончание установки поездного маршрута"/>
+        <sost num="3" color="white" color_background="all" comment="начало установки маневрового маршрута"/>
+        <sost num="4" color="white" color_background="all" comment="окончание установки маневрового маршрута"/>
+    </indicator_of_setting_routes>
+    <indicator_of_cancel_routes comment="Индикатор отмены маршрута" depends_type="">
+        <sost num="0" color="darkBlue" color_background="darkGray" comment="отсутствует отмена маршрута"/>
+        <sost num="1" color="darkBlue" color_background="red" comment="нажата групповая кнопка отмены маршрута"/>
+        <sost num="2" color="darkBlue" color_background="red" comment="отмена маршрута (выдержка времени)"/>
+        <sost num="3" color="darkBlue" color_background="red" comment="отмена маршрута (окончание выдержки времени)"/>
+    </indicator_of_cancel_routes>
+    <indicator_of_artificial_unlocking comment="Индикатор искуственного размыкания секций" depends_type="">
+        <sost num="0" color="darkBlue" color_background="darkGray" comment="отсутствует искуственное размыкание секций"/>
+        <sost num="1" color="darkBlue" color_background="red" comment="нажата индивидуальная кнопка искуственного размыкания секции"/>
+        <sost num="2" color="darkBlue" color_background="red" comment="искуственное размыкание секций (выдержка времени)"/>
+        <sost num="3" color="darkBlue" color_background="red" comment="искуственное размыкание секций (окончание выдержки времени)"/>
+    </indicator_of_artificial_unlocking>
+    <indicator_of_ps comment="Индикатор получения согласия" depends_type="">
+        <sost num="0" color="darkBlue" color_background="darkGray" comment="отсутствует получение согласия"/>
+        <sost num="1" color="darkBlue" color_background="green" comment="согласие получено"/>
+    </indicator_of_ps>
+    <indicator_of_po comment="Индикатор путевое отправление" depends_type="">
+        <sost num="0" color="darkBlue" color_background="darkGray" comment="отсутствует сигнал путевого отправления"/>
+        <sost num="1" color="darkBlue" color_background="red" comment="получен сигнал путевого отправления"/>
+    </indicator_of_po>
+    <indicator_of_ds comment="Индикатор дачи согласия" depends_type="">
+        <sost num="0" color="darkBlue" color_background="darkGray" comment="отсутствует дача согласия"/>
+        <sost num="1" color="darkBlue" color_background="yellow" comment="дача согласия"/>
+    </indicator_of_ds>
+    <indicator_of_pp comment="Индикатор путевое прибытие" depends_type="">
+        <sost num="0" color="darkBlue" color_background="darkGray" comment="отсутствует сигнал путевого прибытия"/>
+        <sost num="1" color="darkBlue" color_background="red" comment="получен сигнал путевого прибытия"/>
+        <sost num="2" color="darkBlue" color_background="darkRed" comment="поезд прибыл на станцию"/>
+    </indicator_of_pp>
+    <indicator_of_on comment="Индикатор отмена набора" depends_type="">
+        <sost num="0" color="darkBlue" color_background="darkGray" comment="отсутствует отмена набора"/>
+        <sost num="1" color="darkBlue" color_background="red" comment="нажата кнопка отмены набора"/>
+    </indicator_of_on>
+    <bottom_track comment="Специальная конечная поездная кнопка" depends_type="">
+        <sost num="0" color="darkGray" color_background="all" comment="отсутствует контроль"/>
+        <sost num="1" color="black" color_background="all" comment="кнопка не нажата"/>
+    </bottom_track>
+</objects>

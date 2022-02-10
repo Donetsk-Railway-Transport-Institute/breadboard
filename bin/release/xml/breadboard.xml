@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DCPP_viewer>
+    <general_window>
+        <!-- Режим запуска программы. Возможны варианты: -->
+	<!-- work - основной режим, если отсутствует связь по СОМ-порту, то ожидает подключения -->
+	<!-- test - тестовый режим, в меню появляется пункт "Тесты", который состоит из файлов -->
+	<!--        в каталоге, заданным в атрибуте dir. -->
+        <!-- play - режим игры -->
+        <!-- emulate_com_port - режим эмуляции СОМ порта. При записи в порт выполняется скрипт name -->
+        <!-- run as="work" stop_watch="1"/ -->
+        <!-- run as="test" dir="./scripts/tests"/ -->
+        <!-- run as="play" name="./xml/play/play_games.xml"/ -->
+        <run as="emulate_com_port" name="./scripts/emulate/emulate_com_port.js"/>
+        <size width="800" height="800"/>
+	<section_size min="10" max="50" current="26"/>
+        <colors	background_color="rgb(181,218,181)"/>
+        <count_cells count_row="29" count_column="28"/>
+ 	<show_grid show="1"/>
+        <objects_xml_file name="./xml/poligon.xml"/>
+	<objects_state_xml_file name="./xml/obj_state.xml"/>
+	<objects_view_script name="./scripts/view_obj.js"/>
+        <!-- Длительность времени удержаня левой кнопки мыши, в течении которого-->
+        <!-- клик воспринимается как команда объекту. После окончания выдержки времени -->
+        <!-- курсор изменяется на Qt::ClosedHandCursor и реализуется перетягивание изображения -->
+	<press_time_limit ms="250"/>
+        <!-- Скорость движения поезда (см/сек) -->
+        <train_speed sm_sec="19"/>
+    </general_window>
+</DCPP_viewer>

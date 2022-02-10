@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="poligon" type="poligonType"/>
+  <xs:complexType name="at_scriptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="xmlType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="peregonType">
+    <xs:sequence>
+      <xs:element type="at_scriptType" name="at_script">
+        <xs:annotation>
+          <xs:documentation>Файл с описанием логики работы автоблокировки  Файл с описанием логики работы полуавтоматики</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xmlType" name="xml">
+        <xs:annotation>
+          <xs:documentation>Файл с описанием объектов перегона  Файл с описанием объектов перегона</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="name" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="controlType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="name_xml" use="optional"/>
+        <xs:attribute type="xs:string" name="name_ui" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="stantionType">
+    <xs:sequence>
+      <xs:element type="at_scriptType" name="at_script">
+        <xs:annotation>
+          <xs:documentation>Файл с описанием маршрутов</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xmlType" name="xml">
+        <xs:annotation>
+          <xs:documentation>Файл с описанием объектов контроля станции</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="controlType" name="control">
+        <xs:annotation>
+          <xs:documentation>Аттрибут control в описании станции присутствует, если она находится  на управлениии и для нее создана панель, с конфигурацией в двух файлах</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="name" use="optional"/>
+    <xs:attribute type="xs:string" name="x" use="optional"/>
+    <xs:attribute type="xs:string" name="y" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="signal_peregon_stantionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="from" use="optional"/>
+        <xs:attribute type="xs:string" name="to" use="optional"/>
+        <xs:attribute type="xs:string" name="gen_signal" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="signal_stantion_peregonType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="from" use="optional"/>
+        <xs:attribute type="xs:string" name="to" use="optional"/>
+        <xs:attribute type="xs:string" name="gen_signal" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="bindingType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="signal_peregon_stantionType" name="signal_peregon_stantion" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Увязка сигналов, атрибут gen_signal="1", если необходимо генерировать  сигнал повторителю (атрибут to) при изменении основного (атрибут from)  Повторители участков удаления/приближения  Контроль состояния перегона Горная-Луговая  Контроль состояния перегона Луговая-Горная</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="signal_stantion_peregonType" name="signal_stantion_peregon" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Увязка предвходных светофоров  Увязка по смене направления на перегоне Горная-Луговая</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="poligonType">
+    <xs:sequence>
+      <xs:element type="peregonType" name="peregon" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="stantionType" name="stantion" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="bindingType" name="binding"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

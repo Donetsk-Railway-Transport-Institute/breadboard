@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="objects" type="objectsType"/>
+  <xs:complexType name="sostType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="num" use="optional"/>
+        <xs:attribute type="xs:string" name="color" use="optional"/>
+        <xs:attribute type="xs:string" name="color_background" use="optional"/>
+        <xs:attribute type="xs:string" name="comment" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="stantionType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="trackType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="track_abType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="track_pabType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="track_siteType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="signalType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="signal_shuntingType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="signal_abType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="str_siteType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="deadlockType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="strType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="direction_of_peregonType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="direction_of_stantionType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="indicator_of_setting_routesType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="indicator_of_cancel_routesType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="indicator_of_artificial_unlockingType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="indicator_of_psType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="indicator_of_poType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="indicator_of_dsType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="indicator_of_ppType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="indicator_of_onType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="bottom_trackType">
+    <xs:sequence>
+      <xs:element type="sostType" name="sost" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="comment"/>
+    <xs:attribute type="xs:string" name="depends_type"/>
+  </xs:complexType>
+  <xs:complexType name="objectsType">
+    <xs:sequence>
+      <xs:element type="stantionType" name="stantion">
+        <xs:annotation>
+          <xs:documentation>Описание типов объектов и их состояний  для каждого состояния 4 обязательных атрибута:     num - порядковый номер в массиве состояний     color - цвет отображения объекта в этом состоянии, 	 если зависит от какого-либо типа, то - "depends",     color_background - цвет фона ячейки отображения, 	 если должен быть общий цвет фона, то - "all"     comment - описание данного состояния</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="trackType" name="track"/>
+      <xs:element type="track_abType" name="track_ab"/>
+      <xs:element type="track_pabType" name="track_pab"/>
+      <xs:element type="track_siteType" name="track_site"/>
+      <xs:element type="signalType" name="signal"/>
+      <xs:element type="signal_shuntingType" name="signal_shunting"/>
+      <xs:element type="signal_abType" name="signal_ab"/>
+      <xs:element type="str_siteType" name="str_site"/>
+      <xs:element type="deadlockType" name="deadlock"/>
+      <xs:element type="strType" name="str"/>
+      <xs:element type="direction_of_peregonType" name="direction_of_peregon"/>
+      <xs:element type="direction_of_stantionType" name="direction_of_stantion"/>
+      <xs:element type="indicator_of_setting_routesType" name="indicator_of_setting_routes"/>
+      <xs:element type="indicator_of_cancel_routesType" name="indicator_of_cancel_routes"/>
+      <xs:element type="indicator_of_artificial_unlockingType" name="indicator_of_artificial_unlocking"/>
+      <xs:element type="indicator_of_psType" name="indicator_of_ps"/>
+      <xs:element type="indicator_of_poType" name="indicator_of_po"/>
+      <xs:element type="indicator_of_dsType" name="indicator_of_ds"/>
+      <xs:element type="indicator_of_ppType" name="indicator_of_pp"/>
+      <xs:element type="indicator_of_onType" name="indicator_of_on"/>
+      <xs:element type="bottom_trackType" name="bottom_track"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

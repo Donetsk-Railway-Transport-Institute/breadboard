@@ -1,0 +1,64 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="logging">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="fin_command" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Команды  передаваемые перед закрытием основного окна (перезагрузка контроллеров)</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="msg" use="optional"/>
+                <xs:attribute type="xs:string" name="code" use="optional"/>
+                <xs:attribute type="xs:string" name="comment" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="obj_command" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Управление тяговым током  Управление стрелками  Управление светофорами</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="msg" use="optional"/>
+                <xs:attribute type="xs:string" name="code" use="optional"/>
+                <xs:attribute type="xs:string" name="comment" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="obj_control" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Ответы на запросы</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="msg" use="optional"/>
+                <xs:attribute type="xs:string" name="code" use="optional"/>
+                <xs:attribute type="xs:string" name="comment" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="error_code" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>коды ошибок</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="msg" use="optional"/>
+                <xs:attribute type="xs:string" name="code" use="optional"/>
+                <xs:attribute type="xs:string" name="comment" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

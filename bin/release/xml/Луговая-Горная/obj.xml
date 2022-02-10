@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<objects>
+    <!-- Атрибуты type, name, script обязательные -->
+    <!-- В объектах возможно использование следующих имен атрибутов: -->
+    <!-- x,y - координаты ключевой (начальной) ячейки отображения -->
+    <obj type="track_pab" name="ЧН1" script="track_ab" x="27" yn="9" yf="15" ph_len="250"/>
+    <obj type="track_pab" name="ЧН3" script="track_ab" x="27" yn="15" yf="21" ph_len="570"/>
+    <obj type="track_pab" name="ЧН2" script="track_ab" x="27" yn="21" yf="27" ph_len="250"/>
+    <obj type="direction_of_peregon" name="СН" script="direction_of_peregon_pab" x="26" y="15"/>
+</objects>

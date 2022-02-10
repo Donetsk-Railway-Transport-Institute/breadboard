@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE objects>
+<objects>
+    <all init_script="./xml/play/init.js" move_train_script="./xml/play/m_train.js"/>
+    <game name="Один поезд на ст.Горная" script_name="./xml/play/s1/s.js" html_name="./xml/play/s1/p.html" result_name="./xml/play/s1/r.xml"/>
+    <game name="Один поезд на ст.Луговая" script_name="./xml/play/s2/s.js" html_name="./xml/play/s2/p.html" result_name="./xml/play/s2/r.xml"/>
+    <game name="Два поезда на ст.Горная" script_name="./xml/play/s3/s.js" html_name="./xml/play/s3/p.html" result_name="./xml/play/s3/r.xml"/>
+    <game name="Отладка автодиспетчера" script_name="./xml/play/s4/s.js" html_name="./xml/play/s4/p.html" result_name="./xml/play/s4/r.xml"/>
+</objects>
