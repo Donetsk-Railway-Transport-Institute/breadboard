@@ -17,7 +17,7 @@ inline bool operator==(const cyclocom::StrCommand &a,const cyclocom::StrCommand 
 }
 
 cyclocom::cyclocom(const QString &xml_file_name, QObject *parent):QObject(parent),
-        CODE_SIZE(-1),m_serial(new ESerialPort(this)),time_limit_control(0),
+        CODE_SIZE(-1),m_serial(new ESerialPort()),time_limit_control(0),
         time_next_control_object(0),index_next_control_object(0),
         ansver_com_timer(false),tcp_sok(nullptr),
         menu_connect_disconnect(nullptr),sb(nullptr){
@@ -276,7 +276,7 @@ void cyclocom::xml_read(const QString &xml_name)
     B_S::xml_valid(xml_name);
     QFile xml_file(xml_name);
     if (!xml_file.open(QIODevice::ReadOnly))
-        qFatal("Failed to open file %s",xml_name.toUtf8().constData());
+        qFatal("Failed to open file %s cyclocom::xml_read()",xml_name.toUtf8().constData());
     auto xml = new QXmlStreamReader(&xml_file);
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     while (!xml->atEnd() && !xml->hasError()){
@@ -355,7 +355,7 @@ void cyclocom::logger_xml_read(){
     B_S::xml_valid(filename_or_full);
     QFile xml_file(filename_or_full);
     if (!xml_file.open(QIODevice::ReadOnly))
-        qFatal("Failed to open file %s",filename_or_full.toUtf8().constData());
+        qFatal("Failed to open file %s (cyclocom::logger_xml_read())",filename_or_full.toUtf8().constData());
     auto xml = new QXmlStreamReader(&xml_file);
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     while (!xml->atEnd() && !xml->hasError()){

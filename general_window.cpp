@@ -144,8 +144,11 @@ void general_window::setupUi()
         pCheckableCameraAction->setChecked(false);
     }
 
-    if(config->run_as.contains("test")) {
+    if(config->run_as.contains("test")) {        
         auto test = new test_DCPP_viewer(this);
+        //Копируем список команд управления и их расшифровку
+        for(auto m_c:cc->s_command) test->msg_comment.append({m_c.msg,m_c.comment});
+        for(auto m_c:cc->s_control) test->msg_comment.append({m_c.msg,m_c.comment});
         reconnect_for_test(test);
         delete cc;
         auto panel = new QMenu("Тесты");
@@ -230,7 +233,7 @@ void general_window::setupUi()
 
 } // setupUi
 
-void general_window::reconnect_for_test(QObject *newobject){
+void general_window::reconnect_for_test(QObject *newobject){    
     for(auto st:stantions){
         //Перенаправляем вывод команд из СОМ порта в лог для МПЦ
         disconnect(st->st_mpc, SIGNAL(set_sost_from_at(const QString &)), cc, SLOT(set_sost(const QString &)));
@@ -238,6 +241,7 @@ void general_window::reconnect_for_test(QObject *newobject){
         //и состояний вместо СОМ порта из тестовых скриптов
         disconnect(cc, SIGNAL(set_new_sost(const QString &)), st->st_mpc, SLOT(set_sost(const QString &)));
         connect(newobject, SIGNAL(set_new_sost(const QString &)), st->st_mpc, SLOT(set_sost(const QString &)));
+        connect(newobject, SIGNAL(set_new_sost(const QString &)), st->st_mpc, SLOT(set_control_panel_sost(const QString &)));
     }
     for(auto peregon:peregons){
         //Перенаправляем вывод команд из СОМ порта в лог для перегона
@@ -247,6 +251,7 @@ void general_window::reconnect_for_test(QObject *newobject){
         disconnect(cc, SIGNAL(set_new_sost(const QString &)), peregon->at, SLOT(set_sost(const QString &)));
         connect(newobject, SIGNAL(set_new_sost(const QString &)), peregon->at, SLOT(set_sost(const QString &)));
     }
+    connect(newobject, SIGNAL(set_new_sost(const QString &)), newobject, SLOT(set_sost_to_board(const QString &)));
 }
 
 void general_window::bind_signals_peregon_stantion(const QString &from,const QString &to, bool gen_signal){
@@ -281,7 +286,7 @@ void general_window::parse_objects(){
     B_S::xml_valid(config->objects_xml_file);
     QFile xml_file(config->objects_xml_file);
     if (!xml_file.open(QIODevice::ReadOnly))
-        qFatal("Failed to open file %s",config->objects_xml_file.toUtf8().constData());
+        qFatal("Failed to open file %s (general_window::parse_objects())",config->objects_xml_file.toUtf8().constData());
     auto xml = new QXmlStreamReader(&xml_file);
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 	while (!xml->atEnd() && !xml->hasError()){

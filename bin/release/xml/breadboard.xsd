@@ -1,120 +1,131 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="DCPP_viewer" type="DCPP_viewerType"/>
-  <xs:complexType name="runType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="as" use="optional"/>
-        <xs:attribute type="xs:string" name="stop_watch" use="optional"/>
-        <xs:attribute type="xs:string" name="dir" use="optional"/>
-        <xs:attribute type="xs:string" name="name" use="optional"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="sizeType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="width"/>
-        <xs:attribute type="xs:string" name="height"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="section_sizeType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="min"/>
-        <xs:attribute type="xs:string" name="max"/>
-        <xs:attribute type="xs:string" name="current"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="colorsType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="background_color"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="count_cellsType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="count_row"/>
-        <xs:attribute type="xs:string" name="count_column"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="show_gridType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="show"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="objects_xml_fileType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="name"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="objects_state_xml_fileType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="name"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="objects_view_scriptType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="name"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="press_time_limitType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="ms"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="train_speedType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="sm_sec"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="general_windowType">
-    <xs:sequence>
-      <xs:element type="runType" name="run" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>Режим запуска программы. Возможны варианты:  work - основной режим, если отсутствует связь по СОМ-порту, то ожидает подключения  test - тестовый режим, в меню появляется пункт "Тесты", который состоит из файлов         в каталоге, заданным в атрибуте dir.  play - режим игры  emulate_com_port - режим эмуляции СОМ порта. При записи в порт выполняется скрипт name</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element type="sizeType" name="size"/>
-      <xs:element type="section_sizeType" name="section_size"/>
-      <xs:element type="colorsType" name="colors"/>
-      <xs:element type="count_cellsType" name="count_cells"/>
-      <xs:element type="show_gridType" name="show_grid"/>
-      <xs:element type="objects_xml_fileType" name="objects_xml_file"/>
-      <xs:element type="objects_state_xml_fileType" name="objects_state_xml_file"/>
-      <xs:element type="objects_view_scriptType" name="objects_view_script"/>
-      <xs:element type="press_time_limitType" name="press_time_limit">
-        <xs:annotation>
-          <xs:documentation>Длительность времени удержаня левой кнопки мыши, в течении которого клик воспринимается как команда объекту. После окончания выдержки времени  курсор изменяется на Qt::ClosedHandCursor и реализуется перетягивание изображения</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element type="train_speedType" name="train_speed">
-        <xs:annotation>
-          <xs:documentation>Скорость движения поезда (см/сек)</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="DCPP_viewerType">
-    <xs:sequence>
-      <xs:element type="general_windowType" name="general_window"/>
-    </xs:sequence>
-  </xs:complexType>
+  <xs:element name="DCPP_viewer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="general_window">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="run">
+                <xs:annotation>
+                  <xs:documentation> Режим запуска программы. Возможны варианты:  work - основной режим, если отсутствует связь по СОМ-порту, то ожидает подключения  test - тестовый режим, в меню появляется пункт "Тесты", который состоит из файлов         в каталоге, заданным в атрибуте dir.  play - режим игры  emulate_com_port - режим эмуляции СОМ порта. При записи в порт выполняется скрипт name  run as="work" stop_watch="1"/  run as="test" dir="./scripts/tests"/ </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="as"/>
+                      <xs:attribute type="xs:string" name="name"/>
+                      <xs:attribute type="xs:string" name="dir"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="size">
+                <xs:annotation>
+                  <xs:documentation> run as="emulate_com_port" name="./scripts/emulate/emulate_com_port.js"/ </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:short" name="width"/>
+                      <xs:attribute type="xs:short" name="height"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="section_size">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:byte" name="min"/>
+                      <xs:attribute type="xs:byte" name="max"/>
+                      <xs:attribute type="xs:byte" name="current"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="colors">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="background_color"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="count_cells">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:byte" name="count_row"/>
+                      <xs:attribute type="xs:byte" name="count_column"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="show_grid">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:byte" name="show"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="objects_xml_file">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="name"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="objects_state_xml_file">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="name"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="objects_view_script">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="name"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="press_time_limit">
+                <xs:annotation>
+                  <xs:documentation> Длительность времени удержаня левой кнопки мыши, в течении которого клик воспринимается как команда объекту. После окончания выдержки времени  курсор изменяется на Qt::ClosedHandCursor и реализуется перетягивание изображения </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:short" name="ms"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="train_speed">
+                <xs:annotation>
+                  <xs:documentation> Скорость движения поезда (см/сек) </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:byte" name="sm_sec"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -54,7 +54,7 @@ void play_breadboard::load_result_games(const QString &file_name){
         return save_result_games(file_name);
     QFile xml_file(file_name);
     if (!xml_file.open(QIODevice::ReadOnly))
-        qFatal(QString("Failed to open file %1").arg(file_name).toUtf8());
+        qFatal("Failed to open file %s (play_breadboard::load_result_games())",file_name.toUtf8().constData());
     auto xml = new QXmlStreamReader(&xml_file);
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     while (!xml->atEnd() && !xml->hasError()){
@@ -167,7 +167,7 @@ void play_breadboard::first_help() {
     msgBox->setWindowModality(Qt::NonModal);
     QString message;
     if (!QFile::exists(curr_game.html_name))
-        qFatal(QString("File %1 does not exist.").arg(curr_game.html_name).toUtf8());
+        qFatal("File %s does not exist (play_breadboard::first_help())",curr_game.html_name.toUtf8().constData());
     QFile inputFile(curr_game.html_name);
     if (inputFile.open(QIODevice::ReadOnly))
     {
@@ -185,7 +185,7 @@ void play_breadboard::parse_xml(const QString &file_name){
     B_S::xml_valid(file_name);
     QFile File(file_name);
     if (!File.open(QIODevice::ReadOnly))
-        qFatal(QString("Failed to open file %1").arg(file_name).toUtf8());
+        qFatal("Failed to open file %s (play_breadboard::parse_xml())",file_name.toUtf8().constData());
     QXmlStreamReader xml(&File);
     while (!xml.atEnd() && !xml.hasError()){
         xml.readNext();

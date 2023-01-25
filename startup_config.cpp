@@ -7,7 +7,7 @@ void startup_config::xml_read(const QString &xml_file_name)
     B_S::xml_valid(xml_file_name);
     QFile xml_file(xml_file_name);
     if (!xml_file.open(QIODevice::ReadOnly))
-        qFatal(QString("Failed to open file %1").arg(xml_file_name).toUtf8());
+        qFatal("Failed to open file %s (startup_config::xml_read())",xml_file_name.toUtf8().constData());
     auto xml = new QXmlStreamReader(&xml_file);
     while (!xml->atEnd() && !xml->hasError()){
 		xml->readNext();
@@ -82,5 +82,5 @@ void startup_config::xml_read(const QString &xml_file_name)
 		}
 	}
 	if (xml->hasError())
-		qFatal(QString("XML error: %1").arg(xml->errorString()).toUtf8());
+        qFatal("XML error: %s", xml->errorString().toUtf8().constData());
 }

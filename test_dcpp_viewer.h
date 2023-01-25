@@ -31,6 +31,12 @@ class test_DCPP_viewer : public QObject {
     QThread workerThread;
 
 public:
+    struct StrCommand{
+        QString msg;
+        QString comment;
+    };
+    QVector <StrCommand> msg_comment;
+
     explicit test_DCPP_viewer(QObject *parent) : QObject(parent){
         auto *worker = new Worker;
         worker->moveToThread(&workerThread);
@@ -39,7 +45,7 @@ public:
         connect(worker, &Worker::resultReady, this, &test_DCPP_viewer::set_new_sost);
         connect(worker, &Worker::end_of_script, this, &test_DCPP_viewer::end_of_script);
         workerThread.start();
-	};
+    }
 
     ~test_DCPP_viewer() override {
         workerThread.quit();
@@ -50,12 +56,15 @@ public slots:
     void run_script(const QString &file_name) {
         at_script_canvas::run_script(this, file_name, QString("typing_group"), QString("T"), QString(""));
         emit(operate(commands));
-    };
+    }
 	void add(const QString &command){ commands.append(command);}
     void end_of_script(){ commands.clear();}
-    //Запись команд напольным устройствам
+    //Запись команд в лог
     void set_sost_to_board(const QString &msg){
-        qInfo(QString("set_sost_to_log(%1)").arg(msg).toUtf8());
+        QString comment;
+        for(auto m_c:msg_comment)
+            if(m_c.msg==msg) comment = m_c.comment;
+        qInfo("set_sost_to_log(%s)\t#%s",msg.toUtf8().constData(),comment.toUtf8().constData());
     }
 
 signals:

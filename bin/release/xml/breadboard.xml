@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE DCPP_viewer>
 <DCPP_viewer>
     <general_window>
         <!-- Режим запуска программы. Возможны варианты: -->
@@ -8,9 +9,9 @@
         <!-- play - режим игры -->
         <!-- emulate_com_port - режим эмуляции СОМ порта. При записи в порт выполняется скрипт name -->
         <!-- run as="work" stop_watch="1"/ -->
-        <!-- run as="test" dir="./scripts/tests"/ -->
+        <run as="test" dir="./scripts/tests"/>
         <!-- run as="play" name="./xml/play/play_games.xml"/ -->
-        <run as="emulate_com_port" name="./scripts/emulate/emulate_com_port.js"/>
+        <!-- run as="emulate_com_port" name="./scripts/emulate/emulate_com_port.js"/ -->
         <size width="800" height="800"/>
 	<section_size min="10" max="50" current="26"/>
         <colors	background_color="rgb(181,218,181)"/>

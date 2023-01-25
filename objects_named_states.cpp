@@ -3,10 +3,10 @@
 
 void OBJECTS_NAMED_STATES::parse_state_objects(startup_config* config)
 {
-	B_S::xml_valid(config->objects_state_xml_file);
+    B_S::xml_valid(config->objects_state_xml_file);
 	QFile xml_file(config->objects_state_xml_file);
 	if (!xml_file.open(QIODevice::ReadOnly))
-        qFatal("Failed to open file %s",config->objects_state_xml_file.toUtf8().constData());
+        qFatal("Failed to open file %s (OBJECTS_NAMED_STATES::parse_state_objects())",config->objects_state_xml_file.toUtf8().constData());
 	auto xml = new QXmlStreamReader(&xml_file);
 	while (!xml->atEnd() && !xml->hasError()){
 		xml->readNext();

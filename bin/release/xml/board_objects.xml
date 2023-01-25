@@ -16,11 +16,11 @@
 <!-- по последовательному порту (кроме циклических). Значения атрибута  -->
 <!-- filename_or_full = "FULL" - запись всх комманд; если filename_or_full = "имя файла" -->
 <!-- - логгируются только комманды, перечисленные в файле -->
-    <!-- logging filename_or_full="./xml/logging_signals.xml"/ -->
-    <logging filename_or_full="FULL"/>
+    <logging filename_or_full="./xml/logging_signals.xml"/>
+    <!-- logging filename_or_full="FULL"/ -->
 
 <!-- Обмен данными через TCP сокет -->
-    <socket host="5.153.128.122" port="16671"/> 
+    <socket host="195.184.206.122" port="16671"/> 
 
 
 <!-- Команды  передаваемые перед закрытием основного окна (перезагрузка контроллеров) -->   

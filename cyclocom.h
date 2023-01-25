@@ -85,7 +85,7 @@ public:
         loop.exec();
     }
 
-    explicit ESerialPort(bool full_log, QObject *parent = nullptr):
+    explicit ESerialPort(QObject *parent = nullptr):
             QSerialPort(parent),connect_to_com_port(false),
             script_name(QString("")),e_data(QByteArray::fromHex("000000")),
             time_limit(0),counter(0){}

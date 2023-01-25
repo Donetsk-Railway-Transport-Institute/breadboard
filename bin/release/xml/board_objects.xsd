@@ -1,16 +1,16 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="board_objects">
     <xs:complexType>
-      <xs:sequence>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
         <xs:element name="init_serial">
           <xs:annotation>
-            <xs:documentation>Возможные значения parity: "No","Even","Odd","Space","Mark"  Возможные значения stopBits: "One","OneAndHalf","Two"  Возможные значения flowControl: "NoFlow","Hardware","Software"</xs:documentation>
+            <xs:documentation> Возможные значения parity: "No","Even","Odd","Space","Mark"  Возможные значения stopBits: "One","OneAndHalf","Two"  Возможные значения flowControl: "NoFlow","Hardware","Software" </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
               <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="name"/>
-                <xs:attribute type="xs:int" name="baudRate"/>
+                <xs:attribute type="xs:short" name="baudRate"/>
                 <xs:attribute type="xs:byte" name="dataBits"/>
                 <xs:attribute type="xs:string" name="parity"/>
                 <xs:attribute type="xs:string" name="stopBits"/>
@@ -21,20 +21,20 @@
         </xs:element>
         <xs:element name="time_limits">
           <xs:annotation>
-            <xs:documentation>time_limit_control - значение времени, в течении которого должен  прийти ответ на записанную в СОМ-порт команду (мс)  time_next_control_object - Промежуток времени до следующей посылки  запроса контроля состояния устройств (Цикл опроса) (мс)</xs:documentation>
+            <xs:documentation> time_limit_control - значение времени, в течении которого должен  прийти ответ на записанную в СОМ-порт команду (мс)  time_next_control_object - Промежуток времени до следующей посылки  запроса контроля состояния устройств (Цикл опроса) (мс) </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
               <xs:extension base="xs:string">
-                <xs:attribute type="xs:string" name="time_limit_control"/>
-                <xs:attribute type="xs:string" name="time_next_control_object"/>
+                <xs:attribute type="xs:short" name="time_limit_control"/>
+                <xs:attribute type="xs:byte" name="time_next_control_object"/>
               </xs:extension>
             </xs:simpleContent>
           </xs:complexType>
         </xs:element>
         <xs:element name="logging">
           <xs:annotation>
-            <xs:documentation>Логгирование, запись в лог команд переданных и принятых  по последовательному порту (кроме циклических). Значения атрибута   mode_or_filename - "FULL" - запись всх комманд; "имя файла"  - логгируются только комманды, перечисленные в файле</xs:documentation>
+            <xs:documentation> Логгирование, запись в лог команд переданных и принятых  по последовательному порту (кроме циклических). Значения атрибута   filename_or_full = "FULL" - запись всх комманд; если filename_or_full = "имя файла"  - логгируются только комманды, перечисленные в файле </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
@@ -46,20 +46,20 @@
         </xs:element>
         <xs:element name="socket">
           <xs:annotation>
-            <xs:documentation>Обмен данными через TCP сокет</xs:documentation>
+            <xs:documentation> logging filename_or_full="FULL"/  Обмен данными через TCP сокет </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
               <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="host"/>
-                <xs:attribute type="xs:string" name="port"/>
+                <xs:attribute type="xs:short" name="port"/>
               </xs:extension>
             </xs:simpleContent>
           </xs:complexType>
         </xs:element>
         <xs:element name="fin_command" maxOccurs="unbounded" minOccurs="0">
           <xs:annotation>
-            <xs:documentation>Команды  передаваемые перед закрытием основного окна (перезагрузка контроллеров)</xs:documentation>
+            <xs:documentation> Команды  передаваемые перед закрытием основного окна (перезагрузка контроллеров) </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
@@ -73,7 +73,7 @@
         </xs:element>
         <xs:element name="obj_command" maxOccurs="unbounded" minOccurs="0">
           <xs:annotation>
-            <xs:documentation>Управление тяговым током  Управление стрелками  Управление светофорами</xs:documentation>
+            <xs:documentation> Управление тяговым током  Управление стрелками  Управление светофорами </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
@@ -85,9 +85,9 @@
             </xs:simpleContent>
           </xs:complexType>
         </xs:element>
-        <xs:element name="cycle" maxOccurs="unbounded" minOccurs="0">
+        <xs:element name="cycle">
           <xs:annotation>
-            <xs:documentation>Контроль свободности/занятости пути</xs:documentation>
+            <xs:documentation> Контроль свободности/занятости пути </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
@@ -101,7 +101,7 @@
         </xs:element>
         <xs:element name="obj_control" maxOccurs="unbounded" minOccurs="0">
           <xs:annotation>
-            <xs:documentation>Ответы на запросы</xs:documentation>
+            <xs:documentation> Ответы на запросы </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
@@ -115,7 +115,7 @@
         </xs:element>
         <xs:element name="error_code" maxOccurs="unbounded" minOccurs="0">
           <xs:annotation>
-            <xs:documentation>коды ошибок</xs:documentation>
+            <xs:documentation> коды ошибок </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
@@ -127,7 +127,7 @@
             </xs:simpleContent>
           </xs:complexType>
         </xs:element>
-      </xs:sequence>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>

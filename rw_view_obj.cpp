@@ -21,7 +21,7 @@ void rw_view_obj::connected_signals()
 void rw_view_obj::set_sost(const QString &name, int new_sost){
     //если это изменение отностится ко мне и новое состояние отличается от предыдущего
     if((name==objectName())&&(sost!=new_sost))
-    {
+    {        
         qDebug()<<"rw_view_obj func:set_sost name="<<name<<" sost="<<new_sost;
         sost=new_sost;
         if(!depends_type.isEmpty()) change_sost_depends();

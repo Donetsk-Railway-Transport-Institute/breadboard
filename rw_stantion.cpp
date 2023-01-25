@@ -17,7 +17,7 @@ void rw_poligon::parse(const QString &name_xml)
     B_S::xml_valid(name_xml);
     QFile xml_file(name_xml);
     if (!xml_file.open(QIODevice::ReadOnly))
-        qFatal(QString("Failed to open file %1").arg(name_xml).toUtf8());
+        qFatal("Failed to open file %s (rw_poligon::parse())",name_xml.toUtf8().constData());
     auto xml = new QXmlStreamReader(&xml_file);
     while (!xml->atEnd() && !xml->hasError()){
         xml->readNext();

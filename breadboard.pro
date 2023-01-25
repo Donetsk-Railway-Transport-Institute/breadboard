@@ -73,6 +73,7 @@ SUBDIRS += \
     breadboard.pro
 
 DISTFILES += \
+    README.md \
     breadboard.pro.user
 
 CONFIG(debug, debug|release) {
@@ -92,9 +93,9 @@ win32{
     FILE_FROM ~= s,/,\\,g
     FILE_TO ~= s,/,\\,g
     QMAKE_POST_LINK += $$quote(cmd /c copy /y $${FILE_FROM} $${FILE_TO}$$escape_expand(\\n\\t))
+#    message("[INFO] cmd /c copy /y $${FILE_FROM} $${FILE_TO}")
 }
 
-#message("[INFO] cmd /c copy /y $${FILE_FROM} $${FILE_TO}")
 #system(cmd /c copy /y $${FILE_FROM} $${FILE_TO}):HAS_BIN=FALSE
 
 

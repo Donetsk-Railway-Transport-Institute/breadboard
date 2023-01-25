@@ -21,14 +21,15 @@ QPixmap B_S::get_start_pix(){
 
 void B_S::xml_valid(const QString &xml_file_name){
     if (!QFile::exists(xml_file_name))
-        qFatal("File %s does not exist",xml_file_name.toUtf8().constData());
+        qFatal("File %s does not exist (B_S::xml_valid())",xml_file_name.toUtf8().constData());
+//    qInfo("Validation file %s (B_S::xml_valid())",xml_file_name.toUtf8().constData());
     QString xsd_file_name = xml_file_name;
     xsd_file_name.replace(xsd_file_name.size()-3,3,QString("xsd"));
     if (!QFile::exists(xsd_file_name)) return;
 
     QFile file(xsd_file_name);
     if (!file.open(QIODevice::ReadOnly))
-        qFatal("Failed to open file %s",xml_file_name.toUtf8().constData());
+        qFatal("Failed to open file %s (B_S::xml_valid())",xml_file_name.toUtf8().constData());
     QXmlSchema schema;
     schema.load(&file, QUrl::fromLocalFile(file.fileName()));
     if (!schema.isValid())

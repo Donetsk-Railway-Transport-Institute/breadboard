@@ -26,7 +26,7 @@ void control_window::parse(const QString &st_name, const QString &xml_name, cons
     B_S::xml_valid(xml_name);
     QFile xml_file(xml_name);
     if (!xml_file.open(QIODevice::ReadOnly))
-        qFatal("Failed to open file %s",xml_name.toUtf8().constData());
+        qFatal("Failed to open file %s (control_window::parse())",xml_name.toUtf8().constData());
     auto xml = new QXmlStreamReader(&xml_file);
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     while (!xml->atEnd() && !xml->hasError())
